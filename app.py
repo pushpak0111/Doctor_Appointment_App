@@ -2,9 +2,8 @@ from flask import Flask, render_template, request, redirect, url_for
 
 app = Flask(__name__)
 
-# Dummy data
-users = {"test": "password"}
-appointments = []
+users = {"test": "password"}  # Dummy user
+appointments = []  # Store appointments in memory
 
 @app.route("/")
 def home():

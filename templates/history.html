@@ -1,0 +1,6 @@
+<h2>Appointment History</h2>
+<ul>
+  {% for a in appointments %}
+    <li>{{a.doctor}} - {{a.date}}</li>
+  {% endfor %}
+</ul>

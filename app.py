@@ -1,34 +1,32 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, session
 
 app = Flask(__name__)
+app.secret_key = "supersecret"  # needed for sessions
 
-users = {"test": "password"}  # Dummy user
-appointments = []  # Store appointments in memory
+users = {
+    "admin": "password",
+    "pushpak": "123456"
+}
 
-@app.route("/")
+@app.route('/')
 def home():
-    return render_template("login.html")
+    return render_template('login.html')
 
-@app.route("/login", methods=["POST"])
+@app.route('/login', methods=['GET', 'POST'])
 def login():
-    username = request.form["admin"]
-    password = request.form["123456"]
-    if username in users and users[username] == password:
-        return redirect(url_for("book"))
-    return "Invalid credentials"
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
 
-@app.route("/book", methods=["GET", "POST"])
-def book():
-    if request.method == "POST":
-        doctor = request.form["doctor"]
-        date = request.form["date"]
-        appointments.append({"doctor": doctor, "date": date})
-        return redirect(url_for("history"))
-    return render_template("book.html")
+        if username in users and users[username] == password:
+            session['user'] = username  # store user in session
+            return redirect(url_for('book'))
+        else:
+            return render_template("login.html", error="Invalid credentials, try again.")
 
-@app.route("/history")
-def history():
-    return render_template("history.html", appointments=appointments)
+    return render_template('login.html')
 
-if __name__ == "__main__":
-    app.run(debug=True)
+@app.route('/logout')
+def logout():
+    session.pop('user', None)  # clear session
+    return redirect(url_for('home'))

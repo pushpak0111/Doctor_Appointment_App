@@ -10,17 +10,19 @@
 
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <div class="container">
-      <a class="navbar-brand" href="/">Doctor Appointment</a>
-      <div class="collapse navbar-collapse">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link" href="/book">Book</a></li>
-          <li class="nav-item"><a class="nav-link" href="/history">History</a></li>
-          <li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
-        </ul>
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Doctor Appointment</a>
+    
+    {% if session.user %}
+      <div class="d-flex">
+        <a class="nav-link text-white" href="{{ url_for('book') }}">Book</a>
+        <a class="nav-link text-white" href="{{ url_for('history') }}">History</a>
+        <a class="nav-link text-white" href="{{ url_for('logout') }}">Logout</a>
       </div>
-    </div>
-  </nav>
+    {% endif %}
+  </div>
+</nav>
+
 
   <!-- Page content -->
   <div class="container py-5">

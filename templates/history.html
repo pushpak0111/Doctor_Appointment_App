@@ -1,6 +1,22 @@
-<h2>Appointment History</h2>
-<ul>
-  {% for a in appointments %}
-    <li>{{a.doctor}} - {{a.date}}</li>
-  {% endfor %}
-</ul>
+{% extends "base.html" %}
+{% block content %}
+
+<h3 class="mb-4">Appointment History</h3>
+<table class="table table-striped shadow">
+  <thead class="table-dark">
+    <tr>
+      <th>Doctor</th>
+      <th>Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for appointment in appointments %}
+    <tr>
+      <td>{{ appointment.doctor }}</td>
+      <td>{{ appointment.date }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}

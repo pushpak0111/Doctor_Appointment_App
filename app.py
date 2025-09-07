@@ -11,8 +11,8 @@ def home():
 
 @app.route("/login", methods=["POST"])
 def login():
-    username = request.form["username"]
-    password = request.form["password"]
+    username = request.form["admin"]
+    password = request.form["123456"]
     if username in users and users[username] == password:
         return redirect(url_for("book"))
     return "Invalid credentials"

@@ -4,16 +4,16 @@
 <div class="card shadow p-4">
   <h3 class="mb-4">Book an Appointment</h3>
   <form method="POST" action="/book">
-    <div class="mb-3">
-      <label class="form-label">Doctor Name</label>
-      <input type="text" class="form-control" name="doctor" required>
-    </div>
-    <div class="mb-3">
-      <label class="form-label">Date</label>
-      <input type="date" class="form-control" name="date" required>
-    </div>
-    <button type="submit" class="btn btn-success w-100">Confirm Appointment</button>
-  </form>
+  <div class="mb-3">
+    <label class="form-label">Doctor Name</label>
+    <input type="text" class="form-control" name="doctor" placeholder="Enter doctor name">
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Date</label>
+    <input type="date" class="form-control" name="date">
+  </div>
+  <button type="submit" class="btn btn-success w-100">Confirm Appointment</button>
+</form>
 </div>
 
 {% endblock %}

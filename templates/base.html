@@ -12,16 +12,17 @@
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">Doctor Appointment</a>
-    
+
     {% if session.user %}
       <div class="d-flex">
-        <a class="nav-link text-white" href="{{ url_for('book') }}">Book</a>
-        <a class="nav-link text-white" href="{{ url_for('history') }}">History</a>
+        <a class="nav-link text-white me-3" href="{{ url_for('book') }}">Book</a>
+        <a class="nav-link text-white me-3" href="{{ url_for('history') }}">History</a>
         <a class="nav-link text-white" href="{{ url_for('logout') }}">Logout</a>
       </div>
     {% endif %}
   </div>
 </nav>
+
 
 
   <!-- Page content -->
